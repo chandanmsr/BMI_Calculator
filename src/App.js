@@ -17,14 +17,14 @@ function App() {
     if (weight === 0 || height === 0) {
       alert('Please enter a valid weight and height')
     } else {
-      let bmi = (weight / (height * height) * 703)
+      let bmi = (weight / ((height / 100) * (height / 100)))
       setBmi(bmi.toFixed(1))
  
       // Logic for message
  
-      if (bmi < 25) {
+      if (bmi < 18.5) {
         setMessage('You are underweight')
-      } else if (bmi >= 25 && bmi < 30) {
+      } else if (bmi >= 18.5 && bmi < 25.01) {
         setMessage('You are a healthy weight')
       } else {
         setMessage('You are overweight')
@@ -44,12 +44,12 @@ function App() {
       <form onSubmit={calcBmi}>
  
         <div>
-          <label>Weight (lbs)</label>
+          <label>Weight (kgs)</label>
           <input value={weight} onChange={(e) => setWeight(e.target.value)} />
         </div>
  
         <div>
-          <label>Height (in)</label>
+          <label>Height (cms)</label>
           <input value={height} onChange={(event) => setHeight(event.target.value)} />
         </div>
  
